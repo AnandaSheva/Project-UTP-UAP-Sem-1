@@ -1,135 +1,137 @@
-/*Anggota Kelompok 7 :
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+/* Anggota Kelompok 7:
 1. Ananda Sheva Hidayat (2217051096)
 2. Dede Juniar Putra (2217051015)
 3. Farid Sidhiq (2257051028)
 */
 
-#include <iostream>
-using namespace std;
+// Struktur untuk data laptop
+struct Laptop {
+    string nama; // Menyimpan nama laptop
+    int harga;   // Menyimpan harga laptop
+};
 
-//Deklarasi variabel
-int jumlah; 
-int total(){
-	int a = jumlah;
-}
-//fungsi header untuk menampilkan header
-void header(){
-	cout <<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
-	cout <<"||\t\t\t\t\t                      \t\t\t\t\t||"<<endl;
-	cout <<"||\t\t\t\t\tWELCOME TO DFS COM STORE \t\t\t\t||"<<endl;
-	cout <<"||\t\t\t\t\t                      \t\t\t\t\t||"<<endl;
-	cout <<"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"<<endl; 
-}
+// Konstanta
+const double PAJAK = 0.1; // Pajak sebesar 10%
 
-//fungsi pilih_laptop sebagai output pilihan laptop
-void pilih_laptop(){
-	cout <<"Laptop yang kamu ambil \t\t : ";
-}
-//fungsi closeHeader untuk menampilkan closeHeader
-void closeHeader(){
-	cout <<"=========================================================="<<endl;
-	cout <<"||\tTERIMA KASIH SUDAH BERBELANJA DI TOKO KAMI\t||"<<endl;
-	cout <<"||\t\t   HAVE A NICE DAY ^_^\t\t\t||"<<endl;
-	cout <<"=========================================================="<<endl<<endl;
+// Deklarasi variabel global
+int totalHarga = 0; // Variabel global untuk menyimpan total harga pembelian
+
+// Fungsi untuk menampilkan header toko
+void header() {
+    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+    cout << "||\t\t\t\t\tWELCOME TO DFS COM STORE\t\t\t\t||\n";
+    cout << "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"; 
 }
 
-//Deklarasi variabel
-int main (){
-	string nama, merklaptop, yes;
-	int jml, kodelaptop;
-	int harga[10], bayar, minus, kurang;
+// Fungsi untuk menampilkan daftar laptop
+void tampilkanLaptop(const vector<Laptop>& daftarLaptop) {
+    cout << "BERIKUT ADALAH 10 LAPTOP YANG AKAN DI FLASHSALE PADA 11/11:\n\n";
+    for (size_t i = 0; i < daftarLaptop.size(); i++) {
+        // Menampilkan setiap laptop di daftar lengkap dengan nama dan harga
+        cout << i + 1 << ". " << daftarLaptop[i].nama << "\tONLY!!!\tRp. " << daftarLaptop[i].harga << endl;
+    }
+    cout << "\nNOTED: HARGA SUDAH TERMASUK PAJAK!" << endl;
+}
 
-//looping dengan do 
-//menambahkan syntax sistem pembersih layar (CLS)
-//syntax sistem color	
-	do {
-	system("CLS");
-	system("COLOR 06");	
-	header (); 
-	cout <<endl; 
-	
-//membuat list barang laptop yang akan di flashsale
-	cout << "BERIKUT ADALAH 10 LAPTOP YANG AKAN DI FLASHSALE PADA 11/11 :"<<endl; 
-	cout <<endl;
-	cout << "1.  Lenovo Ideapad Slim 3i 4/256GB\tONLY!!!\t Rp.5.999.000" <<endl;
-	cout << "2.  Dell Inspiron 3511 4/256GB \t\tONLY!!!\t Rp.6.499.000"<<endl;
-	cout << "3.  Asus Vivobook 14 4/256GB \t\tONLY!!!\t Rp.6.799.000" <<endl;
-	cout << "4.  HP 14s-FQ0020AU 8/512GB \t\tONLY!!!\t Rp.7.199.000"<<endl; 
-	cout << "5.  Lenovo Ideapad S340 8/512GB \tONLY!!!\t Rp.7.599.000" <<endl;
-	cout << "6.  Acer Aspire Slim 5 8/512GB \t\tONLY!!!\t Rp.7.999.000"<<endl;
-	cout << "7.  Asus Vivobook Ultra 15 8/256GB \tONLY!!!\t Rp.8.299.000"<<endl;
-	cout << "8.  MSI Modern 14 8/512GB \t\tONLY!!!\t Rp.8.799.000"<<endl;
-	cout << "9.  HP Pavilion 8/512GB \t\tONLY!!!\t Rp.9.499.000"<<endl;
-	cout << "10. Acer Nitro 5 8/512GB \t\tONLY!!!\t Rp.9.999.000"<<endl<<endl;
-	cout << "NOTED : HARGA SUDAH TERMASUK PAJAK!"<<endl;
-	cout <<endl;
-	cout << "Username Customer\t : "; getline(cin.ignore(), nama);
-	cout << "Jumlah Pembelian\t : "; cin >> jml;
-	cout <<endl;
-	
-//looping dengan for 
-	for (int i=1; i<=jml; i++){
-			cout << "Pilihan Laptop ke - " << i <<endl; 
-			cout << "Opsi ((1)(2)(3)(4)(5)(6)(7)(8)(9)(10)) : "; cin >> kodelaptop;
-			cout<<endl;
-//percabangan pernyataan yang akan dieksekusi
-		if (kodelaptop == 1){
-			pilih_laptop(); cout << "Lenovo Ideapad Slim 3i 4/256GB"<<endl;
-			harga[i]=5999000;
-		} else if (kodelaptop == 2){
-			pilih_laptop(); cout << "Dell Inspiron 3511 4/256GB"<<endl;
-			harga[i]=6499000;
-		} else if (kodelaptop == 3){
-			pilih_laptop(); cout << "Asus Vivobook 14 4/256GB"<<endl; 
-			harga[i]=6799000;
-		} else if (kodelaptop == 4){
-			pilih_laptop(); cout << "HP 14s-FQ0020AU 8/512GB"<<endl; 
-			harga[i]=7199000;
-		} else if (kodelaptop == 5){
-			pilih_laptop(); cout << "Lenovo Ideapad S340 8/512GB"<<endl; 
-			harga[i]=7599000;
-		}  else if (kodelaptop == 6){
-			pilih_laptop(); cout << "Acer Aspire Slim 5 8/512GB"<<endl; 
-			harga[i]=7999000;
-		}	else if (kodelaptop == 7){
-			pilih_laptop(); cout << "Asus Vivobook Ultra 15 8/256GB"<<endl; 
-			harga[i]=8299000;
-		}	else if (kodelaptop == 8){
-			pilih_laptop(); cout << "MSI Modern 14 8/512GB"<<endl; 
-			harga[i]=8799000;
-		}	else if (kodelaptop == 9){
-			pilih_laptop(); cout << "HP Pavilion 8/512GB"<<endl; 
-			harga[i]=9499000;
-		}	else if (kodelaptop == 10){
-			pilih_laptop(); cout << "Acer Nitro 5 8/512GB"<<endl; 
-			harga[i]=9999000;
-		}	else {
-			cout << "Opsi yang anda masukkan tidak valid" <<endl;
-			harga[i]=0;
-		}
-		jumlah += harga[i];
-	}
-//melakukan pembayaran	
-	cout <<endl; 
-	cout << "Total Pembayaran\t\t\t\t : " << "Rp. " << total() <<endl; 
-	cout << "Bayar\t\t\t\t\t\t : " << "Rp. "; cin >> bayar;
-//looping dengan while
-	while (bayar < total())
-	{
-		minus = total() - bayar;
-		cout << "Uang anda tidak cukup! Silahkan bayar kembali\t : Rp. " << minus << endl;
-		cout << "Bayar Kembali!\t\t\t\t\t : " << "Rp. "; cin >> kurang;
-		bayar += kurang;
-	}
-		cout << "Kembali\t\t\t\t\t\t : " << "Rp. " << bayar - total() <<endl; 
-		cout <<endl;
-		cout << "Ingin Membeli lagi? [Y/T]\t\t\t : "; cin >> yes; 
-		cout <<endl;
-		jumlah = 0;
-	}
-	while (yes == "Y" || yes == "y");
-	cout <<endl; 
-	closeHeader();
-	
-	return 0; 
+// Fungsi untuk menghitung total harga pembelian
+int hitungTotal(const vector<int>& harga) {
+    int total = 0; // Variabel untuk menyimpan total sementara
+    for (int h : harga) {
+        total += h; // Menambahkan setiap harga ke total
+    }
+    return total;
+}
+
+// Fungsi untuk menampilkan footer toko
+void closeHeader() {
+    cout << "==========================================================\n";
+    cout << "||\tTERIMA KASIH SUDAH BERBELANJA DI TOKO KAMI\t||\n";
+    cout << "||\t\t   HAVE A NICE DAY ^_^\t\t\t||\n";
+    cout << "==========================================================\n";
+}
+
+int main() {
+    // Daftar laptop yang tersedia di toko
+    vector<Laptop> daftarLaptop = {
+        {"Lenovo Ideapad Slim 3i 4/256GB", 5999000},
+        {"Dell Inspiron 3511 4/256GB", 6499000},
+        {"Asus Vivobook 14 4/256GB", 6799000},
+        {"HP 14s-FQ0020AU 8/512GB", 7199000},
+        {"Lenovo Ideapad S340 8/512GB", 7599000},
+        {"Acer Aspire Slim 5 8/512GB", 7999000},
+        {"Asus Vivobook Ultra 15 8/256GB", 8299000},
+        {"MSI Modern 14 8/512GB", 8799000},
+        {"HP Pavilion 8/512GB", 9499000},
+        {"Acer Nitro 5 8/512GB", 9999000}
+    };
+
+    string nama, yes;           // Variabel untuk nama pengguna dan konfirmasi pembelian lagi
+    vector<int> harga;          // Menyimpan harga laptop yang dipilih
+    do {
+        system("CLS");          // Membersihkan layar terminal
+        system("COLOR 06");     // Mengatur warna tampilan
+        header();               // Menampilkan header toko
+        cout << endl;
+
+        // Menampilkan daftar laptop
+        tampilkanLaptop(daftarLaptop);
+        cout << endl;
+
+        // Input nama customer
+        cout << "Username Customer\t : "; cin.ignore(); getline(cin, nama);
+
+        // Input jumlah pembelian
+        int jumlahPembelian;
+        cout << "Jumlah Pembelian\t : "; cin >> jumlahPembelian;
+
+        // Loop untuk memilih laptop berdasarkan jumlah pembelian
+        for (int i = 0; i < jumlahPembelian; i++) {
+            int kodeLaptop;
+            do {
+                // Meminta input pilihan laptop (1-10)
+                cout << "\nPilihan Laptop ke-" << i + 1 << " (1-10): ";
+                cin >> kodeLaptop;
+                if (kodeLaptop < 1 || kodeLaptop > 10) {
+                    cout << "Opsi tidak valid, silakan ulangi." << endl;
+                }
+            } while (kodeLaptop < 1 || kodeLaptop > 10);
+
+            // Menambahkan harga laptop ke daftar
+            cout << "Laptop yang kamu ambil: " << daftarLaptop[kodeLaptop - 1].nama << endl;
+            harga.push_back(daftarLaptop[kodeLaptop - 1].harga);
+        }
+
+        // Menghitung total harga
+        totalHarga = hitungTotal(harga);
+        cout << "\nTotal Pembayaran\t : Rp. " << totalHarga << endl;
+
+        // Input pembayaran dari pengguna
+        int bayar;
+        cout << "Bayar\t\t\t : Rp. "; cin >> bayar;
+
+        // Validasi pembayaran
+        while (bayar < totalHarga) {
+            int kurang = totalHarga - bayar;
+            cout << "Uang anda tidak cukup! Silahkan bayar kembali: Rp. " << kurang << endl;
+            cout << "Bayar Kembali\t : Rp. "; cin >> kurang;
+            bayar += kurang;
+        }
+
+        // Menampilkan kembalian
+        cout << "Kembali\t\t\t : Rp. " << bayar - totalHarga << endl;
+
+        // Tanya untuk pembelian ulang
+        cout << "\nIngin Membeli lagi? [Y/T] : "; cin >> yes;
+        harga.clear(); // Reset daftar harga untuk pembelian baru
+        totalHarga = 0; // Reset total harga
+
+    } while (yes == "Y" || yes == "y"); // Ulangi jika pengguna ingin membeli lagi
+
+    closeHeader(); // Menampilkan footer toko
+    return 0; // Mengakhiri program
 }
